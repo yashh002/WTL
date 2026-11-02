@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>मराठवाडा कलाग्राम | Marathwada Kalagram</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi:ital@0;1&family=Rozha+One&family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --saffron: #FF6B00;
+    --deep-saffron: #E55A00;
+    --gold: #FFB800;
+    --crimson: #C41E3A;
+    --earth: #8B4513;
+    --cream: #FFF8EE;
+    --warm-white: #FFFDF9;
+    --dark: #1A0A00;
+    --text: #2C1810;
+    --muted: #7A5C4F;
+    --green: #2E7D32;
+    --light-saffron: #FFF0E0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
+    background: var(--warm-white);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAVBAR ─── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 1000;
+    background: rgba(26,10,0,0.95);
+    backdrop-filter: blur(12px);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+    border-bottom: 2px solid var(--saffron);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .nav-logo-icon {
+    width: 44px; height: 44px;
+    background: var(--saffron);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; font-weight: 900; color: white;
+    font-family: 'Rozha One', serif;
+    box-shadow: 0 0 16px rgba(255,107,0,0.5);
+  }
+  .nav-logo-text {
+    color: white;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 15px; font-weight: 700;
+    line-height: 1.2;
+  }
+  .nav-logo-text span { color: var(--gold); display: block; font-size: 11px; font-weight: 400; }
+  .nav-links {
+    display: flex; gap: 28px; list-style: none;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none; font-size: 13px; font-weight: 500;
+    transition: color 0.2s;
+    letter-spacing: 0.3px;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--saffron), var(--gold));
+    color: white !important;
+    padding: 8px 18px; border-radius: 20px;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 12px rgba(255,107,0,0.4);
+  }
+  .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(255,107,0,0.5) !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 2px; background: white; border-radius: 2px; }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #1A0A00 0%, #2C1810 40%, #8B3A00 100%);
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    padding: 100px 5% 60px;
+  }
+  .hero-bg-pattern {
+    position: absolute; inset: 0; opacity: 0.06;
+    background-image: repeating-linear-gradient(45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%);
+    background-size: 30px 30px;
+  }
+  .hero-glow {
+    position: absolute; top: 20%; right: 10%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(255,107,0,0.25) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: pulse 4s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{transform:scale(1); opacity:0.8} 50%{transform:scale(1.1); opacity:1} }
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 700px;
+    animation: fadeUp 1s ease both;
+  }
+  @keyframes fadeUp { from{opacity:0; transform:translateY(40px)} to{opacity:1; transform:translateY(0)} }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,184,0,0.15);
+    border: 1px solid rgba(255,184,0,0.4);
+    color: var(--gold);
+    padding: 6px 14px; border-radius: 30px;
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 1px; text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .hero-badge::before { content: '✦'; font-size: 10px; }
+  .hero-marathi-title {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 900;
+    color: white; line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .hero-marathi-title span { color: var(--saffron); }
+  .hero-english-title {
+    font-family: 'Rozha One', serif;
+    font-size: clamp(18px, 3vw, 28px);
+    color: var(--gold); margin-bottom: 24px;
+    letter-spacing: 1px;
+  }
+  .hero-desc {
+    font-size: 15px; color: rgba(255,255,255,0.7);
+    line-height: 1.8; margin-bottom: 16px;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+  }
+  .hero-desc-en {
+    font-size: 13px; color: rgba(255,255,255,0.5);
+    line-height: 1.7; margin-bottom: 40px; font-style: italic;
+  }
+  .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--saffron) 0%, var(--gold) 100%);
+    color: white; padding: 14px 32px; border-radius: 4px;
+    font-weight: 700; font-size: 14px; text-decoration: none;
+    letter-spacing: 0.5px; transition: all 0.3s;
+    box-shadow: 0 6px 24px rgba(255,107,0,0.45);
+    border: none; cursor: pointer; display: inline-block;
+    position: relative; overflow: hidden;
+  }
+  .btn-primary::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, transparent, rgba(255,255,255,0.2));
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(255,107,0,0.55); }
+  .btn-primary:hover::after { opacity: 1; }
+  .btn-secondary {
+    background: transparent;
+    border: 2px solid rgba(255,255,255,0.3);
+    color: white; padding: 14px 32px; border-radius: 4px;
+    font-weight: 600; font-size: 14px; text-decoration: none;
+    letter-spacing: 0.5px; transition: all 0.3s;
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+  .hero-stats {
+    display: flex; gap: 40px; margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    flex-wrap: wrap;
+  }
+  .hero-stat { text-align: left; }
+  .hero-stat-num {
+    font-family: 'Rozha One', serif;
+    font-size: 36px; color: var(--gold);
+    line-height: 1;
+  }
+  .hero-stat-label {
+    font-size: 12px; color: rgba(255,255,255,0.5);
+    margin-top: 4px; line-height: 1.3;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+  }
+
+  /* ─── SECTION BASE ─── */
+  section { padding: 90px 5%; }
+  .section-tag {
+    display: inline-block;
+    background: var(--light-saffron);
+    color: var(--saffron); font-size: 11px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding: 5px 14px; border-radius: 20px;
+    margin-bottom: 16px; border: 1px solid rgba(255,107,0,0.2);
+  }
+  .section-title {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 900; color: var(--dark);
+    line-height: 1.2; margin-bottom: 8px;
+  }
+  .section-title-en {
+    font-family: 'Rozha One', serif;
+    font-size: clamp(16px, 2vw, 22px);
+    color: var(--muted); margin-bottom: 24px;
+    font-weight: 400;
+  }
+  .section-divider {
+    width: 60px; height: 4px;
+    background: linear-gradient(90deg, var(--saffron), var(--gold));
+    border-radius: 2px; margin-bottom: 32px;
+  }
+
+  /* ─── ABOUT US ─── */
+  #about { background: var(--cream); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+    align-items: center; max-width: 1200px; margin: 0 auto;
+  }
+  .about-visual {
+    position: relative;
+  }
+  .about-logo-display {
+    background: linear-gradient(135deg, #FF6B00, #FFB800);
+    border-radius: 16px;
+    padding: 50px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    box-shadow: 0 20px 60px rgba(255,107,0,0.3);
+    position: relative; overflow: hidden;
+    min-height: 340px;
+  }
+  .about-logo-display::before {
+    content: ''; position: absolute; top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    background: rgba(255,255,255,0.1); border-radius: 50%;
+  }
+  .about-logo-display::after {
+    content: ''; position: absolute; bottom: -60px; left: -30px;
+    width: 240px; height: 240px;
+    background: rgba(255,255,255,0.07); border-radius: 50%;
+  }
+  .about-logo-text {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    color: white; text-align: center; position: relative; z-index: 1;
+  }
+  .about-logo-text .small { font-size: 16px; font-weight: 400; opacity: 0.9; margin-bottom: 6px; }
+  .about-logo-text .big { font-size: 52px; font-weight: 900; line-height: 1; text-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+  .about-logo-text .sub { font-size: 13px; opacity: 0.85; margin-top: 10px; letter-spacing: 0.5px; }
+  .about-founded-badge {
+    position: absolute; bottom: -20px; right: 20px;
+    background: white; border-radius: 10px;
+    padding: 12px 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    z-index: 2;
+  }
+  .about-founded-badge .year {
+    font-family: 'Rozha One', serif; font-size: 28px;
+    color: var(--saffron); line-height: 1;
+  }
+  .about-founded-badge .label { font-size: 11px; color: var(--muted); }
+
+  .about-text { }
+  .about-text p {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 15px; line-height: 1.9; color: var(--text);
+    margin-bottom: 16px;
+  }
+  .about-text p.en { font-family: 'Poppins', sans-serif; font-size: 13px; color: var(--muted); font-style: italic; margin-bottom: 24px; }
+  .about-highlights {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 24px;
+  }
+  .about-highlight-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 14px; background: white;
+    border-radius: 10px;
+    border-left: 3px solid var(--saffron);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+  .about-highlight-item .icon { font-size: 20px; flex-shrink: 0; }
+  .about-highlight-item .text strong {
+    display: block; font-size: 13px; color: var(--dark); margin-bottom: 2px;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+  }
+  .about-highlight-item .text span { font-size: 11px; color: var(--muted); }
+
+  /* ─── PRODUCTS ─── */
+  #products { background: white; }
+  .products-header { text-align: center; max-width: 700px; margin: 0 auto 50px; }
+  .products-header .section-divider { margin: 0 auto 32px; }
+  .products-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 28px; max-width: 1200px; margin: 0 auto;
+  }
+  .product-card {
+    border-radius: 14px; overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    transition: all 0.3s; cursor: pointer;
+    background: white;
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+  .product-card:hover { transform: translateY(-8px); box-shadow: 0 16px 48px rgba(255,107,0,0.18); }
+  .product-img {
+    height: 260px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 70px; position: relative; overflow: hidden;
+  }
+  .product-img.diya-bg { background: linear-gradient(135deg, #FFE0B2, #FFCCBC); }
+  .product-img.statue-bg { background: linear-gradient(135deg, #E8F5E9, #DCEDC8); }
+  .product-img.craft-bg { background: linear-gradient(135deg, #FCE4EC, #F8BBD0); }
+  .product-img.textile-bg { background: linear-gradient(135deg, #E3F2FD, #BBDEFB); }
+  .product-img.jewelry-bg { background: linear-gradient(135deg, #FFF9C4, #FFF59D); }
+  .product-img.decor-bg { background: linear-gradient(135deg, #EDE7F6, #D1C4E9); }
+  .product-img-placeholder {
+    text-align: center;
+  }
+  .product-img-placeholder .emoji { font-size: 64px; display: block; }
+  .product-img-placeholder .coming { font-size: 11px; color: rgba(0,0,0,0.35); margin-top: 8px; font-family: 'Poppins'; background: rgba(255,255,255,0.6); padding: 4px 10px; border-radius: 20px; }
+  .product-diya-real {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .product-photo {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; z-index: 1;
+  }
+  .product-body { padding: 18px 20px; }
+  .product-tag {
+    font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--saffron); margin-bottom: 6px;
+  }
+  .product-name {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 4px;
+  }
+  .product-name-en { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+  .product-desc {
+    font-size: 12px; color: var(--muted); line-height: 1.6;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+  }
+  .product-footer {
+    padding: 14px 20px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .product-craft-type {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 11px; color: var(--muted);
+  }
+  .product-craft-type::before { content: '🤝'; font-size: 12px; }
+  .handmade-badge {
+    background: var(--light-saffron); color: var(--saffron);
+    font-size: 10px; font-weight: 700; padding: 3px 10px;
+    border-radius: 20px; letter-spacing: 0.5px;
+  }
+
+  .shop-cta-banner {
+    margin: 50px auto 0; max-width: 1200px;
+    background: linear-gradient(135deg, #1A0A00 0%, #3D1800 100%);
+    border-radius: 16px; padding: 40px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px; flex-wrap: wrap;
+    position: relative; overflow: hidden;
+  }
+  .shop-cta-banner::before {
+    content: ''; position: absolute; right: -40px; top: -40px;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle, rgba(255,107,0,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .shop-cta-text h3 {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 24px; font-weight: 900; color: white; margin-bottom: 6px;
+  }
+  .shop-cta-text p { font-size: 14px; color: rgba(255,255,255,0.6); }
+
+  /* ─── TRAINING ─── */
+  #training { background: var(--cream); }
+  .training-layout { max-width: 1200px; margin: 0 auto; }
+  .training-intro { max-width: 720px; margin-bottom: 50px; }
+  .programs-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  .program-card {
+    background: white; border-radius: 14px;
+    padding: 28px; border: 1px solid rgba(0,0,0,0.06);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    transition: all 0.3s; position: relative; overflow: hidden;
+  }
+  .program-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: linear-gradient(180deg, var(--saffron), var(--gold));
+  }
+  .program-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(255,107,0,0.12); }
+  .program-icon {
+    font-size: 36px; margin-bottom: 14px; display: block;
+  }
+  .program-title {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 18px; font-weight: 700; color: var(--dark); margin-bottom: 4px;
+  }
+  .program-title-en { font-size: 12px; color: var(--saffron); font-weight: 600; margin-bottom: 12px; letter-spacing: 0.3px; }
+  .program-desc {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 13px; color: var(--muted); line-height: 1.7;
+  }
+  .program-free-tag {
+    display: inline-block; margin-top: 14px;
+    background: rgba(46,125,50,0.1); color: var(--green);
+    font-size: 11px; font-weight: 700; padding: 4px 12px;
+    border-radius: 20px; letter-spacing: 0.5px;
+  }
+
+  .training-process { margin-top: 60px; }
+  .training-process h3 {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 26px; font-weight: 900; margin-bottom: 32px; color: var(--dark);
+  }
+  .process-steps {
+    display: flex; gap: 0; flex-wrap: wrap;
+    max-width: 1200px;
+  }
+  .process-step {
+    flex: 1; min-width: 180px;
+    background: white; padding: 28px 24px;
+    position: relative;
+    border-top: 3px solid var(--saffron);
+    border-radius: 0;
+  }
+  .process-step:first-child { border-radius: 12px 0 0 12px; }
+  .process-step:last-child { border-radius: 0 12px 12px 0; }
+  .process-step + .process-step {
+    border-left: 1px solid rgba(0,0,0,0.06);
+  }
+  .step-num {
+    font-family: 'Rozha One', serif;
+    font-size: 48px; color: rgba(255,107,0,0.12); line-height: 1;
+    position: absolute; top: 12px; right: 16px;
+  }
+  .step-icon { font-size: 28px; margin-bottom: 12px; display: block; }
+  .step-label {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 6px;
+  }
+  .step-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+  /* ─── SUCCESS STORIES ─── */
+  #stories { background: white; }
+  .stories-header { text-align: center; max-width: 600px; margin: 0 auto 50px; }
+  .stories-header .section-divider { margin: 0 auto 32px; }
+  .stories-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 28px; max-width: 1200px; margin: 0 auto;
+  }
+  .story-card {
+    background: var(--cream); border-radius: 16px;
+    padding: 32px; position: relative; overflow: hidden;
+    border: 1px solid rgba(255,107,0,0.1);
+    transition: all 0.3s;
+  }
+  .story-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(255,107,0,0.12); }
+  .story-card::before {
+    content: '"'; position: absolute; top: 16px; right: 20px;
+    font-family: 'Rozha One', serif; font-size: 80px; color: rgba(255,107,0,0.08);
+    line-height: 1;
+  }
+  .story-avatar {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--saffron), var(--gold));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; font-weight: 900; color: white;
+    font-family: 'Rozha One', serif;
+    margin-bottom: 16px;
+  }
+  .story-quote {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 14px; color: var(--text); line-height: 1.8;
+    margin-bottom: 20px; font-style: italic;
+  }
+  .story-name {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 16px; font-weight: 700; color: var(--dark);
+  }
+  .story-location { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .story-craft {
+    margin-top: 12px; display: inline-block;
+    background: white; color: var(--saffron);
+    font-size: 11px; font-weight: 700; padding: 4px 12px;
+    border-radius: 20px; border: 1px solid rgba(255,107,0,0.2);
+  }
+  .founder-spotlight {
+    max-width: 1200px; margin: 50px auto 0;
+    background: linear-gradient(135deg, #FF6B00, #E55A00);
+    border-radius: 16px; padding: 48px;
+    display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .founder-spotlight::after {
+    content: ''; position: absolute; right: -60px; bottom: -60px;
+    width: 280px; height: 280px;
+    background: rgba(255,255,255,0.08); border-radius: 50%;
+  }
+  .founder-avatar-large {
+    width: 100px; height: 100px; border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    border: 3px solid rgba(255,255,255,0.4);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 40px; font-weight: 900; color: white;
+    font-family: 'Rozha One', serif;
+    flex-shrink: 0;
+  }
+  .founder-text h3 {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 22px; font-weight: 900; color: white; margin-bottom: 4px;
+  }
+  .founder-text .title-line { font-size: 13px; color: rgba(255,255,255,0.8); margin-bottom: 16px; }
+  .founder-text p {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 14px; color: rgba(255,255,255,0.9); line-height: 1.8;
+  }
+
+  /* ─── CONTACT ─── */
+  #contact { background: var(--cream); }
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+    max-width: 1100px; margin: 0 auto; align-items: start;
+  }
+  .contact-info { }
+  .contact-info-item {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 18px; background: white; border-radius: 12px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+  .contact-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: linear-gradient(135deg, var(--saffron), var(--gold));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .contact-info-text strong { display: block; font-size: 13px; color: var(--dark); margin-bottom: 4px; font-family: 'Noto Sans Devanagari', sans-serif; }
+  .contact-info-text span { font-size: 13px; color: var(--muted); line-height: 1.5; font-family: 'Noto Sans Devanagari', sans-serif; }
+
+  .contact-form-wrap {
+    background: white; border-radius: 16px;
+    padding: 36px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+  }
+  .contact-form-wrap h3 {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 22px; font-weight: 900; color: var(--dark); margin-bottom: 6px;
+  }
+  .contact-form-wrap .subtitle { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+  .form-group { margin-bottom: 18px; }
+  .form-group label {
+    display: block; font-size: 12px; font-weight: 600;
+    color: var(--text); margin-bottom: 6px;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+  }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 12px 16px;
+    border: 2px solid rgba(0,0,0,0.08); border-radius: 8px;
+    font-size: 14px; color: var(--text);
+    font-family: 'Noto Sans Devanagari', 'Poppins', sans-serif;
+    background: var(--warm-white); outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--saffron);
+    box-shadow: 0 0 0 3px rgba(255,107,0,0.1);
+  }
+  .form-group textarea { resize: vertical; min-height: 90px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-submit {
+    width: 100%; padding: 14px;
+    background: linear-gradient(135deg, var(--saffron), var(--gold));
+    color: white; border: none; border-radius: 8px;
+    font-size: 15px; font-weight: 700; cursor: pointer;
+    font-family: 'Noto Sans Devanagari', 'Poppins', sans-serif;
+    transition: all 0.3s;
+    box-shadow: 0 6px 20px rgba(255,107,0,0.35);
+  }
+  .form-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(255,107,0,0.45); }
+  #form-success {
+    display: none; text-align: center; padding: 24px;
+    color: var(--green); font-size: 16px; font-weight: 700;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #1A0A00;
+    padding: 50px 5% 28px;
+    color: rgba(255,255,255,0.6);
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px; max-width: 1200px; margin: 0 auto 40px;
+  }
+  .footer-brand .logo { font-family: 'Noto Sans Devanagari', sans-serif; font-size: 26px; font-weight: 900; color: white; }
+  .footer-brand .logo span { color: var(--saffron); }
+  .footer-brand p { font-size: 13px; line-height: 1.7; margin-top: 12px; font-family: 'Noto Sans Devanagari', sans-serif; }
+  .footer-col h4 { color: var(--gold); font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--gold); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 24px; text-align: center; font-size: 12px;
+    max-width: 1200px; margin: 0 auto;
+  }
+
+  /* ─── SCROLL ANIMATIONS ─── */
+  .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .founder-spotlight { grid-template-columns: 1fr; text-align: center; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .process-step:first-child { border-radius: 12px 12px 0 0; }
+    .process-step:last-child { border-radius: 0 0 12px 12px; }
+    .process-steps { flex-direction: column; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .about-highlights { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .shop-cta-banner { padding: 28px 24px; }
+    .hero-stats { gap: 24px; }
+  }
+
+  /* Mobile Nav */
+  .mobile-nav {
+    display: none; position: fixed; top: 68px; left: 0; right: 0;
+    background: rgba(26,10,0,0.98); backdrop-filter: blur(12px);
+    padding: 20px 5%; z-index: 999;
+    flex-direction: column; gap: 16px;
+  }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a {
+    color: rgba(255,255,255,0.8); text-decoration: none;
+    font-size: 15px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-family: 'Noto Sans Devanagari', sans-serif;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-icon">क</div>
+    <div class="nav-logo-text">
+      मराठवाडा कलाग्राम
+      <span>Marathwada Kalagram · Parbhani</span>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">आमच्याबद्दल</a></li>
+    <li><a href="#products">उत्पादने</a></li>
+    <li><a href="#training">प्रशिक्षण</a></li>
+    <li><a href="#stories">यशोगाथा</a></li>
+    <li><a href="#contact">संपर्क</a></li>
+    <li><a href="shop.html" class="nav-cta">🛒 Shop Now</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="#about" onclick="toggleNav()">आमच्याबद्दल · About Us</a>
+  <a href="#products" onclick="toggleNav()">उत्पादने · Products</a>
+  <a href="#training" onclick="toggleNav()">प्रशिक्षण · Training</a>
+  <a href="#stories" onclick="toggleNav()">यशोगाथा · Stories</a>
+  <a href="#contact" onclick="toggleNav()">संपर्क · Contact</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-badge">एक सामाजिक उपक्रम · A Social Initiative</div>
+    <h1 class="hero-marathi-title">मराठवाडा <span>कलाग्राम</span></h1>
+    <p class="hero-english-title">Marathwada Kalagram · Parbhani</p>
+    <p class="hero-desc">
+      महिलांच्या उद्योग विकासासाठी एक चळवळ — हस्तकला, स्वावलंबन आणि उद्यमशीलतेची प्रेरणा देणारे केंद्र.
+    </p>
+    <p class="hero-desc-en">
+      A movement for women's entrepreneurial development — promoting handcraft, self-reliance and enterprise across Marathwada.
+    </p>
+    <div class="hero-buttons">
+      <a href="#products" class="btn-primary">🪔 आमची उत्पादने पहा · Browse Products</a>
+      <a href="#training" class="btn-secondary">मोफत प्रशिक्षण · Free Training</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">८+</div>
+        <div class="hero-stat-label">वर्षांचा अनुभव<br><small style="opacity:.7">Years of Service</small></div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">१०००+</div>
+        <div class="hero-stat-label">प्रशिक्षित महिला<br><small style="opacity:.7">Women Trained</small></div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">मोफत</div>
+        <div class="hero-stat-label">प्रशिक्षण व मार्गदर्शन<br><small style="opacity:.7">Free Guidance</small></div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">परभणी</div>
+        <div class="hero-stat-label">मराठवाडा विभाग<br><small style="opacity:.7">Marathwada Region</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT US ═══ -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-visual reveal">
+      <div class="about-logo-display">
+        <div class="about-logo-text">
+          <div class="small">मराठवाडा</div>
+          <div class="big">कलाग्राम</div>
+          <div class="sub">हस्तकला संशोधन केंद्र परभणी</div>
+        </div>
+      </div>
+      <div class="about-founded-badge">
+        <div class="year">२०१७</div>
+        <div class="label">स्थापना वर्ष · Founded</div>
+      </div>
+    </div>
+    <div class="about-text">
+      <div class="section-tag">आमच्याबद्दल · About Us</div>
+      <h2 class="section-title">मातोश्री हस्तकला विकास<br>महिला बचत गट</h2>
+      <p class="section-title-en">Matoshri Hastkala Vikas Mahila Bachat Gat</p>
+      <div class="section-divider"></div>
+      <p>
+        मोठी स्वप्न पाहणे हा प्रत्येकांचा अधिकार आहे. ती साकार करण्यासाठी छोट्यातुन सुरुवात करायला हवी. मराठवाडा कलाग्राम ही संस्था गेल्या ८ वर्षांपासून परभणी जिल्ह्यातील व मराठवाडा विभागातील महिलांना उद्योग उभे करण्याची प्रेरणा देत आहे.
+      </p>
+      <p class="en">
+        Every person has the right to dream big. Marathwada Kalagram has been inspiring women across Parbhani district and the Marathwada region to build their own enterprises for over 8 years — completely free of charge.
+      </p>
+      <div class="about-highlights">
+        <div class="about-highlight-item reveal reveal-delay-1">
+          <span class="icon">🎓</span>
+          <div class="text">
+            <strong>मोफत प्रशिक्षण</strong>
+            <span>Free Skill Training</span>
+          </div>
+        </div>
+        <div class="about-highlight-item reveal reveal-delay-2">
+          <span class="icon">🏛️</span>
+          <div class="text">
+            <strong>शासकीय सहकार्य</strong>
+            <span>Govt. Partnerships (MCED)</span>
+          </div>
+        </div>
+        <div class="about-highlight-item reveal reveal-delay-2">
+          <span class="icon">👩‍🎨</span>
+          <div class="text">
+            <strong>हस्तकला उद्योग</strong>
+            <span>Handicraft Enterprises</span>
+          </div>
+        </div>
+        <div class="about-highlight-item reveal reveal-delay-3">
+          <span class="icon">🌾</span>
+          <div class="text">
+            <strong>मराठवाडा ब्रॅण्ड</strong>
+            <span>Marathwada Brand Identity</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRODUCTS GALLERY ═══ -->
+<section id="products">
+  <div class="products-header reveal">
+    <div class="section-tag">उत्पादने · Handmade Products</div>
+    <h2 class="section-title">हस्तनिर्मित उत्पादने</h2>
+    <p class="section-title-en">Each product crafted with love by Marathwada's women artisans</p>
+    <div class="section-divider"></div>
+  </div>
+  <div class="products-grid">
+    <!-- Real Product: Diyas -->
+    <div class="product-card reveal">
+      <div class="product-img diya-bg">
+        <img class="product-photo" src="images/home-diyas.jpg" alt="Hand-painted decorative diyas" loading="lazy" onerror="this.remove()">
+        <div class="product-img-placeholder">
+          <span class="emoji">🪔</span>
+          <span class="coming">हस्तनिर्मित दिवे</span>
+        </div>
+      </div>
+      <div class="product-body">
+        <div class="product-tag">Best Seller</div>
+        <div class="product-name">सजावटीचे दिवे</div>
+        <div class="product-name-en">Decorative Diyas — Hand Painted</div>
+        <p class="product-desc">रंगीत, नक्षीदार हाताने बनवलेले मातीचे दिवे. प्रत्येक दिवा अनोखा आहे.</p>
+      </div>
+      <div class="product-footer">
+        <span class="product-craft-type">महिला कारागीर</span>
+        <span class="handmade-badge">HANDMADE</span>
+      </div>
+    </div>
+
+    <div class="product-card reveal reveal-delay-1">
+      <div class="product-img statue-bg">
+        <img class="product-photo" src="images/home-idols.jpg" alt="Clay Ganesha idol" loading="lazy" onerror="this.remove()">
+        <div class="product-img-placeholder">
+          <span class="emoji">🗿</span>
+          <span class="coming">फोटो लवकरच</span>
+        </div>
+      </div>
+      <div class="product-body">
+        <div class="product-tag">Festive Special</div>
+        <div class="product-name">मातीच्या मूर्ती</div>
+        <div class="product-name-en">Clay Idols & Sculptures</div>
+        <p class="product-desc">गणपती, लक्ष्मी व इतर देवी-देवतांच्या सुंदर मातीच्या मूर्ती.</p>
+      </div>
+      <div class="product-footer">
+        <span class="product-craft-type">पारंपारिक शिल्पकला</span>
+        <span class="handmade-badge">HANDMADE</span>
+      </div>
+    </div>
+
+    <div class="product-card reveal reveal-delay-2">
+      <div class="product-img craft-bg">
+        <img class="product-photo" src="images/home-weaving.jpg" alt="Handmade woven and textile crafts" loading="lazy" onerror="this.remove()">
+        <div class="product-img-placeholder">
+          <span class="emoji">🧵</span>
+          <span class="coming">फोटो लवकरच</span>
+        </div>
+      </div>
+      <div class="product-body">
+        <div class="product-tag">Traditional Craft</div>
+        <div class="product-name">विणकाम उत्पादने</div>
+        <div class="product-name-en">Weaving & Textile Crafts</div>
+        <p class="product-desc">हाताने विणलेल्या टोपल्या, चटई, शोभेच्या वस्तू.</p>
+      </div>
+      <div class="product-footer">
+        <span class="product-craft-type">विणकाम कारागीर</span>
+        <span class="handmade-badge">HANDMADE</span>
+      </div>
+    </div>
+
+    <div class="product-card reveal reveal-delay-1">
+      <div class="product-img jewelry-bg">
+        <img class="product-photo" src="images/home-jewellery.jpg" alt="Handmade jewellery" loading="lazy" onerror="this.remove()">
+        <div class="product-img-placeholder">
+          <span class="emoji">📿</span>
+          <span class="coming">फोटो लवकरच</span>
+        </div>
+      </div>
+      <div class="product-body">
+        <div class="product-tag">Handcrafted</div>
+        <div class="product-name">दागिने व अलंकार</div>
+        <div class="product-name-en">Jewellery & Ornaments</div>
+        <p class="product-desc">माती, धातू व मण्यांपासून बनवलेले पारंपारिक दागिने.</p>
+      </div>
+      <div class="product-footer">
+        <span class="product-craft-type">ज्वेलरी कारागीर</span>
+        <span class="handmade-badge">HANDMADE</span>
+      </div>
+    </div>
+
+    <div class="product-card reveal reveal-delay-2">
+      <div class="product-img decor-bg">
+        <img class="product-photo" src="images/home-decor.jpg" alt="Handmade home décor toran" loading="lazy" onerror="this.remove()">
+        <div class="product-img-placeholder">
+          <span class="emoji">🏺</span>
+          <span class="coming">फोटो लवकरच</span>
+        </div>
+      </div>
+      <div class="product-body">
+        <div class="product-tag">Home Decor</div>
+        <div class="product-name">घर सजावट वस्तू</div>
+        <div class="product-name-en">Home Décor Items</div>
+        <p class="product-desc">वनस्पती कुंड्या, भिंत सजावट, टेबल सजावट इत्यादी.</p>
+      </div>
+      <div class="product-footer">
+        <span class="product-craft-type">घरसजावट कारागीर</span>
+        <span class="handmade-badge">HANDMADE</span>
+      </div>
+    </div>
+
+    <div class="product-card reveal reveal-delay-3">
+      <div class="product-img craft-bg" style="background: linear-gradient(135deg,#FFF3E0,#FFE0B2);">
+        <img class="product-photo" src="images/home-painting.jpg" alt="Warli painting" loading="lazy" onerror="this.remove()">
+        <div class="product-img-placeholder">
+          <span class="emoji">🎨</span>
+          <span class="coming">फोटो लवकरच</span>
+        </div>
+      </div>
+      <div class="product-body">
+        <div class="product-tag">Art & Craft</div>
+        <div class="product-name">चित्रकला व रंगकाम</div>
+        <div class="product-name-en">Paintings & Art Works</div>
+        <p class="product-desc">वारली, रांगोळी प्रेरित व पारंपारिक चित्रकला.</p>
+      </div>
+      <div class="product-footer">
+        <span class="product-craft-type">चित्रकार कारागीर</span>
+        <span class="handmade-badge">HANDMADE</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="shop-cta-banner reveal">
+    <div class="shop-cta-text">
+      <h3>🛒 आमचे उत्पादन विकत घ्या!</h3>
+      <p>All handmade products available in our online store — supporting women artisans directly</p>
+    </div>
+    <a href="shop.html" class="btn-primary">ऑनलाईन स्टोअर · Visit Online Store →</a>
+  </div>
+</section>
+
+<!-- ═══ TRAINING PROGRAMS ═══ -->
+<section id="training">
+  <div class="training-layout">
+    <div class="training-intro reveal">
+      <div class="section-tag">प्रशिक्षण · Training Programs</div>
+      <h2 class="section-title">मोफत प्रशिक्षण कार्यक्रम</h2>
+      <p class="section-title-en">Free Skill Development Programs for Women</p>
+      <div class="section-divider"></div>
+      <p style="font-family:'Noto Sans Devanagari',sans-serif; font-size:14px; color:var(--muted); line-height:1.9;">
+        शासन आणि खाजगी स्तरावरून महिलांना विविध उद्योगांचे प्रशिक्षण दिले जाते. कोणतेही मूल्य न आकारता, सेवाभावी वृत्तीने हे कार्य चालू आहे.
+        <br><em style="font-size:12px; color:#aaa;">Training is provided through government and private partnerships, completely free, driven by a spirit of service.</em>
+      </p>
+    </div>
+
+    <div class="programs-grid">
+      <div class="program-card reveal">
+        <span class="program-icon">🪔</span>
+        <div class="program-title">हस्तकला व मातीकाम</div>
+        <div class="program-title-en">Handicrafts & Clay Work</div>
+        <p class="program-desc">मातीचे दिवे, मूर्ती, भांडी बनवणे. पारंपारिक तंत्र व आधुनिक डिझाईन.</p>
+        <span class="program-free-tag">✓ मोफत · Free</span>
+      </div>
+      <div class="program-card reveal reveal-delay-1">
+        <span class="program-icon">🧵</span>
+        <div class="program-title">शिलाई व कपडे उद्योग</div>
+        <div class="program-title-en">Tailoring & Garment Industry</div>
+        <p class="program-desc">ड्रेस, ब्लाउज, पर्स, बॅग शिवणे. घरून उद्योग सुरू करण्यासाठी मार्गदर्शन.</p>
+        <span class="program-free-tag">✓ मोफत · Free</span>
+      </div>
+      <div class="program-card reveal reveal-delay-2">
+        <span class="program-icon">🍳</span>
+        <div class="program-title">खाद्यपदार्थ उद्योग</div>
+        <div class="program-title-en">Food Processing & Baking</div>
+        <p class="program-desc">लोणचे, पापड, मसाले, बेकरी उत्पादन. पॅकेजिंग व विक्री मार्गदर्शन.</p>
+        <span class="program-free-tag">✓ मोफत · Free</span>
+      </div>
+      <div class="program-card reveal reveal-delay-1">
+        <span class="program-icon">📿</span>
+        <div class="program-title">दागिने बनवणे</div>
+        <div class="program-title-en">Jewellery Making</div>
+        <p class="program-desc">माती, धातू, मणी, रेझिन पासून दागिने बनवणे. ऑनलाईन विक्रीसाठी मार्गदर्शन.</p>
+        <span class="program-free-tag">✓ मोफत · Free</span>
+      </div>
+      <div class="program-card reveal reveal-delay-2">
+        <span class="program-icon">🎨</span>
+        <div class="program-title">चित्रकला प्रशिक्षण</div>
+        <div class="program-title-en">Painting & Art Training</div>
+        <p class="program-desc">वारली, मधुबनी, रांगोळी डिझाईन. कापड, भिंत, व कागदावर चित्रकला.</p>
+        <span class="program-free-tag">✓ मोफत · Free</span>
+      </div>
+      <div class="program-card reveal reveal-delay-3">
+        <span class="program-icon">💼</span>
+        <div class="program-title">उद्योग मार्गदर्शन</div>
+        <div class="program-title-en">Entrepreneurship Guidance</div>
+        <p class="program-desc">उद्योग नोंदणी, बँक कर्ज, शासकीय योजना व बाजारपेठ माहिती.</p>
+        <span class="program-free-tag">✓ मोफत · Free</span>
+      </div>
+    </div>
+
+    <div class="training-process reveal">
+      <h3>प्रशिक्षण प्रक्रिया · How It Works</h3>
+      <div class="process-steps">
+        <div class="process-step">
+          <span class="step-num">01</span>
+          <span class="step-icon">📝</span>
+          <div class="step-label">नोंदणी करा</div>
+          <div class="step-desc">Register via form or call us at +91 75176 47277</div>
+        </div>
+        <div class="process-step">
+          <span class="step-num">02</span>
+          <span class="step-icon">🗓️</span>
+          <div class="step-label">बैठक व चर्चा</div>
+          <div class="step-desc">Meet our experts to understand your interest & skill</div>
+        </div>
+        <div class="process-step">
+          <span class="step-num">03</span>
+          <span class="step-icon">🎓</span>
+          <div class="step-label">प्रशिक्षण घ्या</div>
+          <div class="step-desc">Attend hands-on training sessions at Kalagram</div>
+        </div>
+        <div class="process-step">
+          <span class="step-num">04</span>
+          <span class="step-icon">🏭</span>
+          <div class="step-label">उद्योग सुरू करा</div>
+          <div class="step-desc">Launch your micro-enterprise with our ongoing support</div>
+        </div>
+        <div class="process-step">
+          <span class="step-num">05</span>
+          <span class="step-icon">📈</span>
+          <div class="step-label">वाढ करा</div>
+          <div class="step-desc">Scale up through market access & community network</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SUCCESS STORIES ═══ -->
+<section id="stories">
+  <div class="stories-header reveal">
+    <div class="section-tag">यशोगाथा · Success Stories</div>
+    <h2 class="section-title">बदललेल्या जीवनकथा</h2>
+    <p class="section-title-en">Women who transformed their lives through Kalagram</p>
+    <div class="section-divider"></div>
+  </div>
+  <div class="stories-grid">
+    <div class="story-card reveal">
+      <div class="story-avatar">स</div>
+      <p class="story-quote">"कलाग्रामच्या प्रशिक्षणानंतर मी घरूनच दिवे बनवण्याचा उद्योग सुरू केला. आज माझ्या उत्पादनांना शहरात व परगावी मागणी आहे."</p>
+      <div class="story-name">सुनीता देशमुख</div>
+      <div class="story-location">📍 परभणी</div>
+      <span class="story-craft">🪔 दिवे उद्योग</span>
+    </div>
+    <div class="story-card reveal reveal-delay-1">
+      <div class="story-avatar">र</div>
+      <p class="story-quote">"शिलाई प्रशिक्षण घेऊन आज मी माझ्या घरी बूटीक चालवते. कुटुंबाला आर्थिक आधार देताना स्वतःचा आनंद मिळतो."</p>
+      <div class="story-name">रेखा जाधव</div>
+      <div class="story-location">📍 जिंतूर, परभणी</div>
+      <span class="story-craft">🧵 बूटीक उद्योग</span>
+    </div>
+    <div class="story-card reveal reveal-delay-2">
+      <div class="story-avatar">म</div>
+      <p class="story-quote">"मला उद्योग सुरू करायचा होता पण भांडवल नव्हते. कलाग्रामने शासकीय कर्जासाठी मार्गदर्शन केले आणि आज माझा पापड उद्योग सुरू आहे."</p>
+      <div class="story-name">मंगला पवार</div>
+      <div class="story-location">📍 सेलू, परभणी</div>
+      <span class="story-craft">🍳 खाद्यपदार्थ उद्योग</span>
+    </div>
+  </div>
+
+  <div class="founder-spotlight reveal">
+    <div class="founder-avatar-large">प्र</div>
+    <div class="founder-text">
+      <h3>सौ. प्रमोदिनी भालेराव</h3>
+      <div class="title-line">संस्थापक · Founder — मराठवाडा हस्तकला संशोधन केंद्र परभणी</div>
+      <p>
+        "मराठवाडा ब्रॅण्ड" निर्माण करण्याचे स्वप्न उराशी बाळगून गेल्या ८ वर्षांपासून महिलांना उद्योगाची प्रेरणा देत आहेत. कोणतेही मूल्य न घेता, सेवाभावी वृत्तीने हजारो महिलांना स्वावलंबी करण्याचे त्यांचे कार्य अतुलनीय आहे. महाराष्ट्र उद्योजकता विकास केंद्र (MCED) सहकार्याने विविध प्रशिक्षण कार्यक्रम राबवले जातात.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact">
+  <div style="max-width:1100px; margin:0 auto 40px;">
+    <div class="section-tag">संपर्क · Contact & Register</div>
+    <h2 class="section-title">मोफत मार्गदर्शनासाठी संपर्क करा</h2>
+    <p class="section-title-en">Register for free training or guidance — we're here to help</p>
+    <div class="section-divider"></div>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <div class="contact-info-item">
+        <div class="contact-icon">📍</div>
+        <div class="contact-info-text">
+          <strong>पत्ता · Address</strong>
+          <span>बानाटे कॉम्प्लेक्स, वर्मा कॉलनी,<br>सुमनताई विद्यालयाजवळ,<br>परभणी, ता.जि. परभणी (महाराष्ट्र)</span>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon">📞</div>
+        <div class="contact-info-text">
+          <strong>दूरध्वनी · Phone</strong>
+          <span>+91 75176 47277<br>Atharva Deshmukhh</span>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon">⏰</div>
+        <div class="contact-info-text">
+          <strong>वेळ · Working Hours</strong>
+          <span>सोमवार – शनिवार<br>Monday – Saturday: 10 AM – 6 PM</span>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon">🌐</div>
+        <div class="contact-info-text">
+          <strong>विभाग · Region</strong>
+          <span>परभणी जिल्हा व संपूर्ण मराठवाडा विभाग<br>Parbhani District & Marathwada Region</span>
+        </div>
+      </div>
+      <div style="padding: 20px; background: linear-gradient(135deg, #FF6B00, #FFB800); border-radius: 12px; text-align:center; margin-top: 8px;">
+        <p style="color:white; font-family:'Noto Sans Devanagari',sans-serif; font-size:14px; font-weight:700; margin-bottom:6px;">कोणतीही महिला, कुठूनही नोंदणी करू शकते</p>
+        <p style="color:rgba(255,255,255,0.85); font-size:12px;">Any woman from Marathwada can register — all training is FREE</p>
+      </div>
+    </div>
+
+    <div class="contact-form-wrap reveal reveal-delay-1">
+      <h3>नोंदणी फॉर्म · Registration Form</h3>
+      <p class="subtitle">मोफत प्रशिक्षण व मार्गदर्शनासाठी खालील फॉर्म भरा</p>
+      <div id="registration-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>पूर्ण नाव · Full Name *</label>
+            <input type="text" id="fname" placeholder="तुमचे नाव">
+          </div>
+          <div class="form-group">
+            <label>वय · Age</label>
+            <input type="number" id="age" placeholder="उदा. 28">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>मोबाईल नंबर · Mobile Number *</label>
+          <input type="tel" id="phone" placeholder="9XXXXXXXXX">
+        </div>
+        <div class="form-group">
+          <label>गाव / शहर · Village / City *</label>
+          <input type="text" id="village" placeholder="तुमचे गाव किंवा शहर">
+        </div>
+        <div class="form-group">
+          <label>कोणत्या उद्योगात रस आहे? · Interest Area *</label>
+          <select id="interest">
+            <option value="">निवडा · Select</option>
+            <option>हस्तकला व मातीकाम · Handicrafts & Clay</option>
+            <option>शिलाई व कपडे · Tailoring & Garments</option>
+            <option>खाद्यपदार्थ उद्योग · Food Processing</option>
+            <option>दागिने बनवणे · Jewellery Making</option>
+            <option>चित्रकला · Painting & Art</option>
+            <option>इतर · Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>संदेश / प्रश्न · Message (Optional)</label>
+          <textarea id="message" placeholder="तुमचा प्रश्न किंवा संदेश लिहा..."></textarea>
+        </div>
+        <p id="registration-error" role="alert" style="display:none; color:#a12818; font-size:13px; margin-bottom:12px;"></p>
+        <button class="form-submit" id="registration-submit" type="button" onclick="submitForm()">
+          💬 WhatsApp वर नोंदणी पाठवा · Register via WhatsApp →
+        </button>
+        <a href="tel:+917517647277" class="form-submit" style="display:block; text-align:center; text-decoration:none; margin-top:10px; background:transparent; color:var(--saffron); border:2px solid var(--saffron); box-shadow:none;">
+          📞 किंवा फोन करा · Or call +91 75176 47277
+        </a>
+      </div>
+      <div id="form-success">
+        ✅ WhatsApp उघडले आहे — कृपया संदेश "Send" करा!<br>
+        <span style="font-size:13px; font-weight:400; color:var(--muted);">Press Send in WhatsApp to complete your registration. We will contact you within 24 hours. धन्यवाद!</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">मराठवाडा <span>कलाग्राम</span></div>
+      <p>महिलांच्या उद्योग विकासासाठी एक चळवळ. परभणी, मराठवाडा. गेल्या ८ वर्षांपासून सेवाभावी वृत्तीने कार्यरत.</p>
+      <p style="margin-top:12px; font-size:12px; color:rgba(255,255,255,0.4);">A movement for women's entrepreneurial development in Marathwada.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#about">आमच्याबद्दल</a></li>
+        <li><a href="#products">उत्पादने</a></li>
+        <li><a href="#training">प्रशिक्षण</a></li>
+        <li><a href="#stories">यशोगाथा</a></li>
+        <li><a href="#contact">संपर्क / नोंदणी</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+917517647277">📞 +91 75176 47277</a></li>
+        <li><a href="#">📍 Parbhani, Maharashtra</a></li>
+        <li><a href="#">🕐 Mon–Sat: 10AM–6PM</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 मराठवाडा कलाग्राम — मातोश्री हस्तकला विकास महिला बचत गट, परभणी · All Rights Reserved</p>
+    <p style="margin-top:6px; font-size:11px; color:rgba(255,255,255,0.3);">Empowering Women · Preserving Craft · Building Marathwada</p>
+  </div>
+</footer>
+<script>
+  // Mobile Nav
+  function toggleNav() {
+    document.getElementById('mobileNav').classList.toggle('open');
+  }
+  // Scroll Reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  // Registration -> WhatsApp (no backend needed)
+  const WHATSAPP_NUMBER = '917517647277';
+  function submitForm() {
+    const name = document.getElementById('fname').value.trim();
+    const age = document.getElementById('age').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const village = document.getElementById('village').value.trim();
+    const interest = document.getElementById('interest').value;
+    const message = document.getElementById('message').value.trim();
+    const errorMessage = document.getElementById('registration-error');
+    errorMessage.style.display = 'none';
+    if (!name || !phone || !village || !interest) {
+      alert('कृपया सर्व आवश्यक माहिती भरा · Please fill all required fields');
+      return;
+    }
+    if (!/^(?:\+?91)?[6-9]\d{9}$/.test(phone.replace(/[\s-]/g, ''))) {
+      errorMessage.textContent = 'कृपया योग्य मोबाईल नंबर टाका · Please enter a valid 10-digit mobile number';
+      errorMessage.style.display = 'block';
+      return;
+    }
+    const lines = [
+      'नमस्कार, मला मोफत प्रशिक्षणासाठी नोंदणी करायची आहे.',
+      '',
+      'नाव: ' + name,
+      age ? 'वय: ' + age : null,
+      'मोबाईल: ' + phone,
+      'गाव/शहर: ' + village,
+      'उद्योग: ' + interest,
+      message ? 'संदेश: ' + message : null
+    ].filter(l => l !== null);
+    const url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));
+    window.open(url, '_blank', 'noopener');
+    document.getElementById('registration-form').style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+  }
+  // Navbar active
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    nav.style.background = window.scrollY > 50 ? 'rgba(26,10,0,0.98)' : 'rgba(26,10,0,0.95)';
+  });
+</script>
+</body>
+</html>

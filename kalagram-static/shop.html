@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>हस्तनिर्मित उत्पादने | Shop — मराठवाडा कलाग्राम</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi&family=Rozha+One&family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --saffron: #FF6B00;
+    --deep-saffron: #E55A00;
+    --gold: #FFB800;
+    --crimson: #C41E3A;
+    --dark: #1A0A00;
+    --dark2: #2C1810;
+    --cream: #FFF8EE;
+    --warm-white: #FFFDF9;
+    --text: #2C1810;
+    --muted: #7A5C4F;
+    --green: #2E7D32;
+    --light-saffron: #FFF0E0;
+    --card-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    --hover-shadow: 0 16px 48px rgba(255,107,0,0.2);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    font-family:'Poppins','Noto Sans Devanagari',sans-serif;
+    background:var(--warm-white); color:var(--text);
+    overflow-x:hidden;
+  }
+
+  /* ── NAVBAR (identical to index.html) ── */
+  nav {
+    position:fixed; top:0; width:100%; z-index:1000;
+    background:rgba(26,10,0,0.97);
+    backdrop-filter:blur(12px);
+    padding:0 5%;
+    display:flex; align-items:center; justify-content:space-between;
+    height:68px;
+    border-bottom:2px solid var(--saffron);
+  }
+  .nav-logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
+  .nav-logo-icon {
+    width:44px; height:44px; background:var(--saffron); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:20px; font-weight:900; color:white;
+    font-family:'Rozha One',serif;
+    box-shadow:0 0 16px rgba(255,107,0,0.5);
+  }
+  .nav-logo-text { color:white; font-family:'Noto Sans Devanagari',sans-serif; font-size:15px; font-weight:700; line-height:1.2; }
+  .nav-logo-text span { color:var(--gold); display:block; font-size:11px; font-weight:400; }
+  .nav-links { display:flex; gap:28px; list-style:none; }
+  .nav-links a {
+    color:rgba(255,255,255,0.8); text-decoration:none;
+    font-size:13px; font-weight:500; transition:color 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active { color:var(--gold); }
+  .nav-cta {
+    background:linear-gradient(135deg,var(--saffron),var(--gold));
+    color:white !important; padding:8px 18px; border-radius:20px;
+    font-weight:600 !important; box-shadow:0 4px 12px rgba(255,107,0,0.4);
+  }
+  .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
+  .hamburger span { width:24px; height:2px; background:white; border-radius:2px; }
+  .mobile-nav {
+    display:none; position:fixed; top:68px; left:0; right:0;
+    background:rgba(26,10,0,0.98); backdrop-filter:blur(12px);
+    padding:20px 5%; z-index:999; flex-direction:column; gap:16px;
+  }
+  .mobile-nav.open { display:flex; }
+  .mobile-nav a {
+    color:rgba(255,255,255,0.8); text-decoration:none;
+    font-size:15px; padding:8px 0;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    font-family:'Noto Sans Devanagari',sans-serif;
+  }
+
+  /* ── SHOP HERO BANNER ── */
+  .shop-hero {
+    margin-top:68px;
+    background:linear-gradient(135deg, #1A0A00 0%, #3D1800 50%, #1A0A00 100%);
+    padding:50px 5%;
+    position:relative; overflow:hidden;
+  }
+  .shop-hero::before {
+    content:''; position:absolute; inset:0;
+    background-image:repeating-linear-gradient(45deg,var(--gold) 0,var(--gold) 1px,transparent 0,transparent 50%);
+    background-size:30px 30px; opacity:0.04;
+  }
+  .shop-hero-inner {
+    max-width:1200px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    flex-wrap:wrap; gap:24px; position:relative; z-index:1;
+  }
+  .shop-hero-text h1 {
+    font-family:'Noto Sans Devanagari',sans-serif;
+    font-size:clamp(26px,4vw,48px); font-weight:900;
+    color:white; line-height:1.1; margin-bottom:6px;
+  }
+  .shop-hero-text h1 span { color:var(--saffron); }
+  .shop-hero-text p { font-size:13px; color:rgba(255,255,255,0.6); margin-top:6px; }
+  .shop-hero-badges { display:flex; gap:12px; flex-wrap:wrap; }
+  .hero-badge-pill {
+    background:rgba(255,184,0,0.15);
+    border:1px solid rgba(255,184,0,0.3);
+    color:var(--gold); padding:6px 16px; border-radius:30px;
+    font-size:12px; font-weight:600;
+  }
+
+  /* ── TRUST BAR ── */
+  .trust-bar {
+    background:var(--saffron);
+    padding:10px 5%;
+    display:flex; justify-content:center; gap:40px; flex-wrap:wrap;
+  }
+  .trust-item {
+    display:flex; align-items:center; gap:8px;
+    color:white; font-size:12px; font-weight:600;
+  }
+  .trust-item span { font-size:16px; }
+
+  /* ── MAIN LAYOUT ── */
+  .shop-layout {
+    max-width:1300px; margin:0 auto;
+    padding:40px 5%;
+    display:grid; grid-template-columns:240px 1fr; gap:32px;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar { position:sticky; top:90px; align-self:start; }
+  .sidebar-card {
+    background:white; border-radius:14px;
+    box-shadow:var(--card-shadow);
+    overflow:hidden; margin-bottom:20px;
+    border:1px solid rgba(0,0,0,0.05);
+  }
+  .sidebar-card-header {
+    background:linear-gradient(135deg,var(--dark),var(--dark2));
+    padding:14px 18px;
+    font-family:'Noto Sans Devanagari',sans-serif;
+    font-size:14px; font-weight:700; color:white;
+    display:flex; align-items:center; gap:8px;
+  }
+  .sidebar-card-body { padding:14px; }
+  .cat-filter-btn {
+    display:flex; align-items:center; gap:10px;
+    width:100%; padding:10px 12px;
+    border:none; background:transparent;
+    cursor:pointer; border-radius:8px;
+    text-align:left; transition:all 0.2s;
+    margin-bottom:4px;
+    font-family:'Noto Sans Devanagari','Poppins',sans-serif;
+  }
+  .cat-filter-btn:hover { background:var(--light-saffron); }
+  .cat-filter-btn.active { background:var(--light-saffron); border-left:3px solid var(--saffron); }
+  .cat-icon { font-size:20px; flex-shrink:0; }
+  .cat-label { flex:1; }
+  .cat-label strong { display:block; font-size:13px; color:var(--dark); }
+  .cat-label span { font-size:11px; color:var(--muted); }
+  .cat-count {
+    background:var(--light-saffron); color:var(--saffron);
+    font-size:11px; font-weight:700;
+    padding:2px 8px; border-radius:10px;
+  }
+  .cat-filter-btn.active .cat-count { background:var(--saffron); color:white; }
+
+  .whatsapp-sidebar {
+    background:linear-gradient(135deg,#25D366,#128C7E);
+    border-radius:14px; padding:20px; text-align:center;
+    box-shadow:0 8px 24px rgba(37,211,102,0.3);
+  }
+  .whatsapp-sidebar h4 {
+    font-family:'Noto Sans Devanagari',sans-serif;
+    color:white; font-size:14px; font-weight:700; margin-bottom:6px;
+  }
+  .whatsapp-sidebar p { color:rgba(255,255,255,0.85); font-size:12px; margin-bottom:14px; }
+  .whatsapp-btn-side {
+    display:block; background:white; color:#25D366;
+    text-decoration:none; padding:10px 16px; border-radius:8px;
+    font-weight:700; font-size:13px;
+    transition:all 0.2s;
+  }
+  .whatsapp-btn-side:hover { transform:translateY(-2px); box-shadow:0 6px 16px rgba(0,0,0,0.15); }
+
+  /* ── PRODUCTS AREA ── */
+  .products-area { }
+
+  /* Category Section */
+  .category-section { margin-bottom:52px; }
+  .category-section.hidden { display:none; }
+
+  .cat-section-header {
+    display:flex; align-items:center; gap:16px;
+    margin-bottom:24px; padding-bottom:16px;
+    border-bottom:2px solid var(--light-saffron);
+  }
+  .cat-section-icon {
+    width:52px; height:52px; border-radius:12px;
+    background:linear-gradient(135deg,var(--saffron),var(--gold));
+    display:flex; align-items:center; justify-content:center;
+    font-size:24px; flex-shrink:0;
+    box-shadow:0 6px 16px rgba(255,107,0,0.3);
+  }
+  .cat-section-title { flex:1; }
+  .cat-section-title h2 {
+    font-family:'Noto Sans Devanagari',sans-serif;
+    font-size:22px; font-weight:900; color:var(--dark); margin-bottom:2px;
+  }
+  .cat-section-title p { font-size:12px; color:var(--muted); }
+  .cat-section-count {
+    background:var(--dark); color:white;
+    font-size:12px; font-weight:700;
+    padding:4px 12px; border-radius:20px;
+  }
+
+  /* Product Grid */
+  .product-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+    gap:20px;
+  }
+
+  /* Product Card */
+  .product-card {
+    background:white; border-radius:14px;
+    box-shadow:var(--card-shadow);
+    border:1px solid rgba(0,0,0,0.06);
+    overflow:hidden; transition:all 0.3s;
+    display:flex; flex-direction:column;
+    position:relative;
+  }
+  .product-card:hover {
+    transform:translateY(-8px);
+    box-shadow:var(--hover-shadow);
+  }
+
+  .product-badge {
+    position:absolute; top:12px; left:12px; z-index:2;
+    background:var(--crimson); color:white;
+    font-size:10px; font-weight:700; padding:3px 10px;
+    border-radius:20px; letter-spacing:0.5px;
+  }
+  .product-badge.new { background:var(--green); }
+  .product-badge.popular { background:var(--saffron); }
+
+  .product-img-wrap {
+    height:200px; position:relative;
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .product-img-wrap.diya   { background:linear-gradient(135deg,#FFE0B2,#FFCCBC); }
+  .product-img-wrap.statue { background:linear-gradient(135deg,#E8F5E9,#C8E6C9); }
+  .product-img-wrap.jewel  { background:linear-gradient(135deg,#FFF9C4,#FFF176); }
+  .product-img-wrap.weave  { background:linear-gradient(135deg,#FCE4EC,#F8BBD0); }
+  .product-img-wrap.decor  { background:linear-gradient(135deg,#EDE7F6,#D1C4E9); }
+
+  .product-photo { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1; }
+  .product-img-overlay { z-index:2; }
+  .product-emoji {
+    font-size:72px;
+    filter:drop-shadow(0 8px 16px rgba(0,0,0,0.15));
+    transition:transform 0.3s;
+  }
+  .product-card:hover .product-emoji { transform:scale(1.1) rotate(-3deg); }
+  .product-img-overlay {
+    position:absolute; bottom:8px; right:8px;
+    background:rgba(255,255,255,0.85); backdrop-filter:blur(4px);
+    border-radius:20px; padding:3px 10px;
+    font-size:10px; font-weight:700; color:var(--dark);
+  }
+
+  .product-body { padding:16px; flex:1; }
+  .product-category-tag {
+    font-size:10px; font-weight:700; letter-spacing:1.5px;
+    text-transform:uppercase; color:var(--saffron);
+    margin-bottom:6px;
+  }
+  .product-name {
+    font-family:'Noto Sans Devanagari',sans-serif;
+    font-size:16px; font-weight:700; color:var(--dark);
+    margin-bottom:3px; line-height:1.3;
+  }
+  .product-name-en { font-size:11px; color:var(--muted); margin-bottom:8px; }
+  .product-desc {
+    font-family:'Noto Sans Devanagari',sans-serif;
+    font-size:12px; color:var(--muted); line-height:1.6;
+  }
+
+  .product-footer {
+    padding:12px 16px;
+    border-top:1px solid rgba(0,0,0,0.05);
+    display:flex; align-items:center; justify-content:space-between; gap:8px;
+  }
+  .product-price {
+    font-family:'Rozha One',serif;
+    font-size:18px; color:var(--saffron);
+  }
+  .product-price small {
+    font-family:'Poppins',sans-serif;
+    font-size:11px; color:var(--muted);
+    text-decoration:line-through; margin-right:4px;
+  }
+  .order-btn {
+    display:flex; align-items:center; gap:6px;
+    background:linear-gradient(135deg,#25D366,#128C7E);
+    color:white; text-decoration:none;
+    padding:8px 14px; border-radius:8px;
+    font-size:12px; font-weight:700;
+    transition:all 0.25s; white-space:nowrap;
+    box-shadow:0 4px 12px rgba(37,211,102,0.3);
+  }
+  .order-btn:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(37,211,102,0.4); }
+  .order-btn .wa-icon { font-size:14px; }
+  .order-modal {
+    position:fixed; inset:0; z-index:2000; display:flex; align-items:center;
+    justify-content:center; padding:20px; background:rgba(26,10,0,0.72);
+  }
+  .order-modal[hidden] { display:none; }
+  .order-modal-card {
+    width:min(520px,100%); max-height:90vh; overflow:auto; padding:28px;
+    background:white; border-radius:16px; box-shadow:0 20px 60px rgba(0,0,0,0.3);
+  }
+  .order-modal-header { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+  .order-modal-header h2 { color:var(--dark); font:700 21px 'Noto Sans Devanagari','Poppins',sans-serif; }
+  .order-modal-close { border:0; background:transparent; font-size:26px; cursor:pointer; color:var(--muted); }
+  .order-modal-card label {
+    display:block; margin:14px 0 5px; color:var(--text); font-size:13px;
+    font-weight:600; font-family:'Noto Sans Devanagari','Poppins',sans-serif;
+  }
+  .order-modal-card input,.order-modal-card textarea {
+    width:100%; padding:11px 12px; border:1px solid #ddd1c5; border-radius:7px;
+    font:14px 'Poppins','Noto Sans Devanagari',sans-serif;
+  }
+  .order-modal-card textarea { min-height:76px; resize:vertical; }
+  .order-modal-card .order-submit {
+    width:100%; margin-top:18px; border:0; border-radius:8px; padding:13px;
+    background:linear-gradient(135deg,var(--saffron),var(--gold)); color:white;
+    font:700 14px 'Noto Sans Devanagari','Poppins',sans-serif; cursor:pointer;
+  }
+  .order-modal-error { color:#a12818; font-size:13px; min-height:20px; margin:10px 0 0; }
+  .order-choice {
+    display:block; text-align:center; text-decoration:none; font-weight:600; font-size:15px;
+    padding:14px; border-radius:10px; margin-top:10px; color:white; transition:transform .2s;
+  }
+  .order-choice:hover { transform:translateY(-2px); }
+  .order-choice.wa { background:#25D366; }
+  .order-choice.call { background:var(--saffron); }
+
+  /* ── SORT/FILTER BAR ── */
+  .filter-bar {
+    display:flex; align-items:center; justify-content:space-between;
+    flex-wrap:wrap; gap:12px;
+    background:white; border-radius:12px;
+    padding:14px 20px; margin-bottom:28px;
+    box-shadow:var(--card-shadow);
+    border:1px solid rgba(0,0,0,0.05);
+  }
+  .filter-bar-left { display:flex; align-items:center; gap:10px; }
+  .filter-label { font-size:13px; color:var(--muted); font-weight:500; }
+  .filter-chips { display:flex; gap:8px; flex-wrap:wrap; }
+  .filter-chip {
+    padding:5px 14px; border-radius:20px; border:none;
+    font-size:12px; font-weight:600; cursor:pointer;
+    transition:all 0.2s; font-family:'Noto Sans Devanagari','Poppins',sans-serif;
+    background:var(--light-saffron); color:var(--saffron);
+  }
+  .filter-chip.active, .filter-chip:hover {
+    background:var(--saffron); color:white;
+  }
+  .results-count { font-size:13px; color:var(--muted); }
+  .results-count strong { color:var(--dark); }
+
+  /* ── CUSTOM ORDER BANNER ── */
+  .custom-order-banner {
+    background:linear-gradient(135deg,var(--dark) 0%,#3D1800 100%);
+    border-radius:16px; padding:36px 40px;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:24px; flex-wrap:wrap; margin-top:48px;
+    position:relative; overflow:hidden;
+  }
+  .custom-order-banner::before {
+    content:''; position:absolute; right:-60px; top:-60px;
+    width:250px; height:250px;
+    background:radial-gradient(circle,rgba(255,107,0,0.2) 0%,transparent 70%);
+    border-radius:50%;
+  }
+  .custom-order-text h3 {
+    font-family:'Noto Sans Devanagari',sans-serif;
+    font-size:22px; font-weight:900; color:white; margin-bottom:6px;
+  }
+  .custom-order-text p { font-size:13px; color:rgba(255,255,255,0.65); }
+  .custom-order-btn {
+    display:inline-flex; align-items:center; gap:10px;
+    background:linear-gradient(135deg,var(--saffron),var(--gold));
+    color:white; text-decoration:none;
+    padding:14px 28px; border-radius:8px;
+    font-weight:700; font-size:14px; white-space:nowrap;
+    box-shadow:0 8px 24px rgba(255,107,0,0.4);
+    transition:all 0.3s; flex-shrink:0;
+  }
+  .custom-order-btn:hover { transform:translateY(-3px); box-shadow:0 12px 32px rgba(255,107,0,0.5); }
+
+  /* ── HOW TO ORDER ── */
+  .how-to-order {
+    background:var(--cream); border-radius:16px;
+    padding:36px 40px; margin-top:24px;
+  }
+  .how-to-order h3 {
+    font-family:'Noto Sans Devanagari',sans-serif;
+    font-size:20px; font-weight:900; color:var(--dark);
+    margin-bottom:24px; text-align:center;
+  }
+  .order-steps {
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px;
+  }
+  .order-step {
+    background:white; border-radius:12px; padding:20px;
+    text-align:center;
+    box-shadow:0 2px 12px rgba(0,0,0,0.05);
+    border-top:3px solid var(--saffron);
+  }
+  .order-step .step-num {
+    font-family:'Rozha One',serif; font-size:32px;
+    color:rgba(255,107,0,0.15); line-height:1;
+    margin-bottom:8px;
+  }
+  .order-step .step-icon { font-size:28px; display:block; margin-bottom:8px; }
+  .order-step h4 {
+    font-family:'Noto Sans Devanagari',sans-serif;
+    font-size:14px; font-weight:700; color:var(--dark); margin-bottom:4px;
+  }
+  .order-step p { font-size:11px; color:var(--muted); line-height:1.5; }
+
+  /* ── FOOTER ── */
+  footer {
+    background:#1A0A00; padding:50px 5% 28px;
+    color:rgba(255,255,255,0.6); margin-top:60px;
+  }
+  .footer-grid {
+    display:grid; grid-template-columns:2fr 1fr 1fr;
+    gap:40px; max-width:1200px; margin:0 auto 40px;
+  }
+  .footer-brand .logo {
+    font-family:'Noto Sans Devanagari',sans-serif;
+    font-size:26px; font-weight:900; color:white;
+  }
+  .footer-brand .logo span { color:var(--saffron); }
+  .footer-brand p { font-size:13px; line-height:1.7; margin-top:12px; font-family:'Noto Sans Devanagari',sans-serif; }
+  .footer-col h4 { color:var(--gold); font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; margin-bottom:16px; }
+  .footer-col ul { list-style:none; }
+  .footer-col ul li { margin-bottom:10px; }
+  .footer-col ul li a { color:rgba(255,255,255,0.6); text-decoration:none; font-size:13px; transition:color 0.2s; }
+  .footer-col ul li a:hover { color:var(--gold); }
+  .footer-bottom {
+    border-top:1px solid rgba(255,255,255,0.08);
+    padding-top:24px; text-align:center; font-size:12px;
+    max-width:1200px; margin:0 auto;
+  }
+
+  /* ── REVEAL ANIMATION ── */
+  .reveal { opacity:0; transform:translateY(24px); transition:opacity 0.6s,transform 0.6s; }
+  .reveal.visible { opacity:1; transform:none; }
+  .reveal-delay-1 { transition-delay:0.1s; }
+  .reveal-delay-2 { transition-delay:0.2s; }
+  .reveal-delay-3 { transition-delay:0.3s; }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:960px){
+    .shop-layout { grid-template-columns:1fr; }
+    .sidebar { position:static; display:flex; flex-wrap:wrap; gap:12px; }
+    .sidebar-card { margin-bottom:0; flex:1; min-width:200px; }
+    .whatsapp-sidebar { flex:1; min-width:200px; }
+    .nav-links { display:none; }
+    .hamburger { display:flex; }
+    .footer-grid { grid-template-columns:1fr 1fr; }
+    .custom-order-banner { padding:28px 24px; }
+    .how-to-order { padding:28px 24px; }
+  }
+  @media(max-width:600px){
+    .footer-grid { grid-template-columns:1fr; }
+    .trust-bar { gap:16px; }
+    .filter-bar { flex-direction:column; align-items:flex-start; }
+    .product-grid { grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); }
+    .product-img-wrap { height:160px; }
+    .product-emoji { font-size:52px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-icon">क</div>
+    <div class="nav-logo-text">
+      मराठवाडा कलाग्राम
+      <span>Marathwada Kalagram · Parbhani</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">आमच्याबद्दल</a></li>
+    <li><a href="index.html#training">प्रशिक्षण</a></li>
+    <li><a href="index.html#stories">यशोगाथा</a></li>
+    <li><a href="shop.html" class="active">🛒 Shop</a></li>
+    <li><a href="index.html#contact">संपर्क</a></li>
+    <li><a href="https://wa.me/917517647277" target="_blank" class="nav-cta">📞 ऑर्डर करा</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html#about" onclick="toggleNav()">आमच्याबद्दल · About Us</a>
+  <a href="index.html#training" onclick="toggleNav()">प्रशिक्षण · Training</a>
+  <a href="index.html#stories" onclick="toggleNav()">यशोगाथा · Stories</a>
+  <a href="shop.html" onclick="toggleNav()">🛒 Shop</a>
+  <a href="index.html#contact" onclick="toggleNav()">संपर्क · Contact</a>
+</div>
+
+<!-- ═══ SHOP HERO ═══ -->
+<div class="shop-hero">
+  <div class="shop-hero-inner">
+    <div class="shop-hero-text">
+      <h1>हस्तनिर्मित <span>उत्पादने</span></h1>
+      <p>Handcrafted with love by women artisans of Marathwada · मराठवाडा महिला कारागीरांनी प्रेमाने बनवलेले</p>
+      <div class="shop-hero-badges" style="margin-top:14px;">
+        <div class="hero-badge-pill">🤝 100% Handmade</div>
+        <div class="hero-badge-pill">📦 WhatsApp Order</div>
+        <div class="hero-badge-pill">💳 UPI Payment</div>
+        <div class="hero-badge-pill">🌾 Marathwada Brand</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TRUST BAR ═══ -->
+<div class="trust-bar">
+  <div class="trust-item"><span>🚚</span> महाराष्ट्रभर डिलिव्हरी · All Maharashtra</div>
+  <div class="trust-item"><span>💰</span> UPI / GPay / PhonePe</div>
+  <div class="trust-item"><span>🔒</span> सुरक्षित पेमेंट · Secure Payment</div>
+  <div class="trust-item"><span>👩</span> महिला कारागीर · Women Artisans</div>
+</div>
+
+<!-- ═══ SHOP LAYOUT ═══ -->
+<div class="shop-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-card-header">🗂️ श्रेणी · Categories</div>
+      <div class="sidebar-card-body">
+        <button class="cat-filter-btn active" onclick="filterCategory('all',this)">
+          <span class="cat-icon">🏪</span>
+          <div class="cat-label">
+            <strong>सर्व उत्पादने</strong>
+            <span>All Products</span>
+          </div>
+          <span class="cat-count">15</span>
+        </button>
+        <button class="cat-filter-btn" onclick="filterCategory('diya',this)">
+          <span class="cat-icon">🪔</span>
+          <div class="cat-label">
+            <strong>दिवे</strong>
+            <span>Diyas</span>
+          </div>
+          <span class="cat-count">3</span>
+        </button>
+        <button class="cat-filter-btn" onclick="filterCategory('statue',this)">
+          <span class="cat-icon">🗿</span>
+          <div class="cat-label">
+            <strong>मूर्ती</strong>
+            <span>Clay Statues</span>
+          </div>
+          <span class="cat-count">3</span>
+        </button>
+        <button class="cat-filter-btn" onclick="filterCategory('jewel',this)">
+          <span class="cat-icon">📿</span>
+          <div class="cat-label">
+            <strong>दागिने</strong>
+            <span>Jewellery</span>
+          </div>
+          <span class="cat-count">3</span>
+        </button>
+        <button class="cat-filter-btn" onclick="filterCategory('weave',this)">
+          <span class="cat-icon">🧵</span>
+          <div class="cat-label">
+            <strong>विणकाम</strong>
+            <span>Weaving</span>
+          </div>
+          <span class="cat-count">3</span>
+        </button>
+        <button class="cat-filter-btn" onclick="filterCategory('decor',this)">
+          <span class="cat-icon">🏺</span>
+          <div class="cat-label">
+            <strong>घर सजावट</strong>
+            <span>Home Décor</span>
+          </div>
+          <span class="cat-count">3</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="whatsapp-sidebar">
+      <h4>📞 थेट ऑर्डर करा</h4>
+      <p>Any question? Chat with us directly on WhatsApp</p>
+      <a href="https://wa.me/917517647277?text=नमस्कार%2C%20मला%20उत्पादनांबद्दल%20माहिती%20हवी%20आहे." target="_blank" class="whatsapp-btn-side">
+        💬 WhatsApp वर बोलूया
+      </a>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-header">📍 आमचा पत्ता</div>
+      <div class="sidebar-card-body" style="font-family:'Noto Sans Devanagari',sans-serif; font-size:12px; color:var(--muted); line-height:1.7;">
+        बानाटे कॉम्प्लेक्स, वर्मा कॉलनी,<br>
+        सुमनताई विद्यालयाजवळ,<br>
+        परभणी, महाराष्ट्र<br><br>
+        <strong style="color:var(--dark);">📞 +91 75176 47277</strong><br>
+        <small>Mon–Sat: 10AM – 6PM</small>
+      </div>
+    </div>
+  </aside>
+
+  <!-- PRODUCTS AREA -->
+  <main class="products-area">
+
+    <!-- Filter Bar -->
+    <div class="filter-bar reveal">
+      <div class="filter-bar-left">
+        <span class="filter-label">फिल्टर ·</span>
+        <div class="filter-chips">
+          <button class="filter-chip active" onclick="filterChip('all',this)">सर्व · All</button>
+          <button class="filter-chip" onclick="filterChip('diya',this)">🪔 दिवे</button>
+          <button class="filter-chip" onclick="filterChip('statue',this)">🗿 मूर्ती</button>
+          <button class="filter-chip" onclick="filterChip('jewel',this)">📿 दागिने</button>
+          <button class="filter-chip" onclick="filterChip('weave',this)">🧵 विणकाम</button>
+          <button class="filter-chip" onclick="filterChip('decor',this)">🏺 घर सजावट</button>
+        </div>
+      </div>
+      <div class="results-count"><strong id="productCount">15</strong> उत्पादने</div>
+    </div>
+
+    <!-- ── CATEGORY: DIYAS ── -->
+    <div class="category-section reveal" id="cat-diya">
+      <div class="cat-section-header">
+        <div class="cat-section-icon">🪔</div>
+        <div class="cat-section-title">
+          <h2>दिवे · Diyas</h2>
+          <p>Hand-painted clay lamps — each piece unique, made with love</p>
+        </div>
+        <span class="cat-section-count">3 उत्पादने</span>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card reveal">
+          <span class="product-badge popular">Popular</span>
+          <div class="product-img-wrap diya">
+            <img class="product-photo" src="images/decorative-painted-diya.jpg" alt="Decorative Painted Diya" loading="lazy" onerror="this.remove()">
+            <span class="product-emoji">🪔</span>
+            <span class="product-img-overlay">Handmade</span>
+          </div>
+          <div class="product-body">
+            <div class="product-category-tag">दिवे · Diyas</div>
+            <div class="product-name">रंगीत नक्षीदार दिवा</div>
+            <div class="product-name-en">Decorative Painted Diya</div>
+            <p class="product-desc">हाताने रंगवलेला, नक्षीदार मातीचा दिवा. सणासुदीसाठी परिपूर्ण.</p>
+          </div>
+          <div class="product-footer">
+            <div class="product-price"><small>₹120</small>₹80</div>
+            <a href="https://wa.me/917517647277?text=नमस्कार%2C%20मला%20%22रंगीत%20नक्षीदार%20दिवा%22%20ऑर्डर%20करायचा%20आहे.%20कृपया%20माहिती%20द्या." target="_blank" class="order-btn">
+              <span class="wa-icon">🛒</span> ऑर्डर करा
+            </a>
+          </div>
+        </div>
+
+        <div class="product-card reveal reveal-delay-1">
+          <span class="product-badge new">New</span>
+          <div class="product-img-wrap diya">
+            <img class="product-photo" src="images/diya-gift-set-4-pieces.jpg" alt="Diya Gift Set — 4 Pieces" loading="lazy" onerror="this.remove()">
+            <span class="product-emoji">✨</span>
+            <span class="product-img-overlay">Set of 4</span>
+          </div>
+          <div class="product-body">
+            <div class="product-category-tag">दिवे · Diyas</div>
+            <div class="product-name">दिव्यांचा संच (४ नग)</div>
+            <div class="product-name-en">Diya Gift Set — 4 Pieces</div>
+            <p class="product-desc">चार वेगवेगळ्या डिझाईनचे दिवे — भेटवस्तूसाठी सुंदर पर्याय.</p>
+          </div>
+          <div class="product-footer">
+            <div class="product-price"><small>₹380</small>₹280</div>
+            <a href="https://wa.me/917517647277?text=नमस्कार%2C%20मला%20%22दिव्यांचा%20संच%20(४%20नग)%22%20ऑर्डर%20करायचा%20आहे." target="_blank" class="order-btn">
+              <span class="wa-icon">🛒</span> ऑर्डर करा
+            </a>
+          </div>
+        </div>
+
+        <div class="product-card reveal reveal-delay-2">
+          <div class="product-img-wrap diya">
+            <img class="product-photo" src="images/flower-shaped-diya.jpg" alt="Flower-Shaped Diya" loading="lazy" onerror="this.remove()">
+            <span class="product-emoji">🌸</span>
+            <span class="product-img-overlay">Handmade</span>
+          </div>
+          <div class="product-body">
+            <div class="product-category-tag">दिवे · Diyas</div>
+            <div class="product-name">फुलाकृती दिवा</div>
+            <div class="product-name-en">Flower-Shaped Diya</div>
+            <p class="product-desc">कमळाच्या आकाराचा मातीचा दिवा. घरसजावटीसाठी अप्रतिम.</p>
+          </div>
+          <div class="product-footer">
+            <div class="product-price"><small>₹150</small>₹100</div>
+            <a href="https://wa.me/917517647277?text=नमस्कार%2C%20मला%20%22फुलाकृती%20दिवा%22%20ऑर्डर%20करायचा%20आहे." target="_blank" class="order-btn">
+              <span class="wa-icon">🛒</span> ऑर्डर करा
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── CATEGORY: CLAY STATUES ── -->
+    <div class="category-section reveal" id="cat-statue">
+      <div class="cat-section-header">
+        <div class="cat-section-icon">🗿</div>
+        <div class="cat-section-title">
+          <h2>मूर्ती · Clay Statues</h2>
+          <p>Traditional clay idols sculpted by skilled women artisans</p>
+        </div>
+        <span class="cat-section-count">3 उत्पादने</span>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card reveal">
+          <span class="product-badge popular">Popular</span>
+          <div class="product-img-wrap statue">
+            <img class="product-photo" src="images/ganesha-clay-idol.jpg" alt="Ganesha Clay Idol" loading="lazy" onerror="this.remove()">
+            <span class="product-emoji">🐘</span>
+            <span class="product-img-overlay">Handmade</span>
+          </div>
+          <div class="product-body">
+            <div class="product-category-tag">मूर्ती · Statues</div>
+            <div class="product-name">गणपती मूर्ती</div>
+            <div class="product-name-en">Ganesha Clay Idol</div>
+            <p class="product-desc">शुद्ध मातीची पारंपारिक गणपती मूर्ती. पर्यावरणपूरक व सुंदर.</p>
+          </div>
+          <div class="product-footer">
+            <div class="product-price"><small>₹500</small>₹350</div>
+            <a href="https://wa.me/917517647277?text=नमस्कार%2C%20मला%20%22गणपती%20मूर्ती%22%20ऑर्डर%20करायची%20आहे." target="_blank" class="order-btn">
+              <span class="wa-icon">🛒</span> ऑर्डर करा
+            </a>
+          </div>
+        </div>
+
+        <div class="product-card reveal reveal-delay-1">
+          <span class="product-badge new">New</span>
+          <div class="product-img-wrap statue">
+            <img class="product-photo" src="images/goddess-lakshmi-idol.jpg" alt="Goddess Lakshmi Idol" loading="lazy" onerror="this.remove()">
+            <span class="product-emoji">🪆</span>
+            <span class="product-img-overlay">Handmade</span>
+          </div>
+          <div class="product-body">
+            <div class="product-category-tag">मूर्ती · Statues</div>
+            <div class="product-name">लक्ष्मी मातेची मूर्ती</div>
+            <div class="product-name-en">Goddess Lakshmi Idol</div>
+            <p class="product-desc">सोनेरी रंगात रंगवलेली, हाताने तयार केलेली लक्ष्मी मातेची मूर्ती.</p>
+          </div>
+          <div class="product-footer">
+            <div class="product-price"><small>₹450</small>₹320</div>
+            <a href="https://wa.me/917517647277?text=नमस्कार%2C%20मला%20%22लक्ष्मी%20मातेची%20मूर्ती%22%20ऑर्डर%20करायची%20आहे." target="_blank" class="order-btn">
+              <span class="wa-icon">🛒</span> ऑर्डर करा
+            </a>
+          </div>
+        </div>
+
+        <div class="product-card reveal reveal-delay-2">
+          <div class="product-img-wrap statue">
+            <img class="product-photo" src="images/peacock-clay-sculpture.jpg" alt="Peacock Clay Sculpture" loading="lazy" onerror="this.remove()">
+            <span class="product-emoji">🦚</span>
+            <span class="product-img-overlay">Handmade</span>
+          </div>
+          <div class="product-body">
+            <div class="product-category-tag">मूर्ती · Statues</div>
+            <div class="product-name">मोराची मातीची मूर्ती</div>
+            <div class="product-name-en">Peacock Clay Sculpture</div>
+            <p class="product-desc">रंगीबेरंगी मोराची शिल्पकृती — घर सजावटीसाठी एक उत्कृष्ट पर्याय.</p>
+          </div>
+          <div class="product-footer">
+            <div class="product-price"><small>₹600</small>₹420</div>
+            <a href="https://wa.me/917517647277?text=नमस्कार%2C%20मला%20%22मोराची%20मातीची%20मूर्ती%22%20ऑर्डर%20करायची%20आहे." target="_blank" class="order-btn">
+              <span class="wa-icon">🛒</span> ऑर्डर करा
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── CATEGORY: JEWELLERY ── -->
+    <div class="category-section reveal" id="cat-jewel">
+      <div class="cat-section-header">
+        <div class="cat-section-icon">📿</div>
+        <div class="cat-section-title">
+          <h2>दागिने · Jewellery</h2>
+          <p>Handcrafted traditional ornaments — clay, beads & metal</p>
+        </div>
+        <span class="cat-section-count">3 उत्पादने</span>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card reveal">
+          <span class="product-badge popular">Popular</span>
+          <div class="product-img-wrap jewel">
+            <img class="product-photo" src="images/clay-earrings-traditional-design.jpg" alt="Clay Earrings — Traditional Design" loading="lazy" onerror="this.remove()">
+            <span class="product-emoji">📿</span>
+            <span class="product-img-overlay">Handmade</span>
+          </div>
+          <div class="product-body">
+            <div class="product-category-tag">दागिने · Jewellery</div>
+            <div class="product-name">मातीचे कानातले</div>
+            <div class="product-name-en">Clay Earrings — Traditional Design</div>
+            <p class="product-desc">मातीपासून बनवलेले हलके व सुंदर कानातले. पारंपारिक नक्षी.</p>
+          </div>
+          <div class="product-footer">
+            <div class="product-price"><small>₹250</small>₹180</div>
+            <a href="https://wa.me/917517647277?text=नमस्कार%2C%20मला%20%22मातीचे%20कानातले%22%20ऑर्डर%20करायचे%20आहेत." target="_blank" class="order-btn">
+              <span class="wa-icon">🛒</span> ऑर्डर करा
+            </a>
+          </div>
+        </div>
+
+        <div class="product-card reveal reveal-delay-1">
+          <div class="product-img-wrap jewel">
+            <img class="product-photo" src="images/beaded-necklace-handmade.jpg" alt="Beaded Necklace — Handmade" loading="lazy" onerror="this.remove()">
+            <span class="product-emoji">📿</span>
+            <span class="product-img-overlay">Handmade</span>
+          </div>
+          <div class="product-body">
+            <div class="product-category-tag">दागिने · Jewellery</div>
+            <div class="product-name">मण्यांचा हार</div>
+            <div class="product-name-en">Beaded Necklace — Handmade</div>
+            <p class="product-desc">रंगीत मण्यांनी बनवलेला सुंदर हार. पारंपारिक महाराष्ट्रीयन शैली.</p>
+          </div>
+          <div class="product-footer">
+            <div class="product-price"><small>₹400</small>₹280</div>
+            <a href="https://wa.me/917517647277?text=नमस्कार%2C%20मला%20%22मण्यांचा%20हार%22%20ऑर्डर%20करायचा%20आहे." target="_blank" class="order-btn">
+              <span class="wa-icon">🛒</span> ऑर्डर करा
+            </a>
+          </div>
+        </div>
+
+        <div class="product-card reveal reveal-delay-2">
+          <span class="product-badge new">New</span>
+          <div class="product-img-wrap jewel">
+            <img class="product-photo" src="images/handmade-bangle-set.jpg" alt="Handmade Bangle Set" loading="lazy" onerror="this.remove()">
+            <span class="product-emoji">💛</span>
+            <span class="product-img-overlay">Handmade</span>
+          </div>
+          <div class="product-body">
+            <div class="product-category-tag">दागिने · Jewellery</div>
+            <div class="product-name">बांगड्यांचा संच</div>
+            <div class="product-name-en">Handmade Bangle Set</div>
+            <p class="product-desc">लाख व रंगांपासून बनवलेल्या पारंपारिक बांगड्या. ६ नगांचा संच.</p>
+          </div>
+          <div class="product-footer">
+            <div class="product-price"><small>₹320</small>₹220</div>
+            <a href="https://wa.me/917517647277?text=नमस्कार%2C%20मला%20%22बांगड्यांचा%20संच%22%20ऑर्डर%20करायचा%20आहे." target="_blank" class="order-btn">
+              <span class="wa-icon">🛒</span> ऑर्डर करा
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── CATEGORY: WEAVING ── -->
+    <div class="category-section reveal" id="cat-weave">
+      <div class="cat-section-header">
+        <div class="cat-section-icon">🧵</div>
+        <div class="cat-section-title">
+          <h2>विणकाम · Weaving & Textiles</h2>
+          <p>Handwoven baskets, mats and textile crafts by skilled artisans</p>
+        </div>
+        <span class="cat-section-count">3 उत्पादने</span>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card reveal">
+          <span class="product-badge popular">Popular</span>
+          <div class="product-img-wrap weave">
+            <img class="product-photo" src="images/handwoven-bamboo-basket.jpg" alt="Handwoven Bamboo Basket" loading="lazy" onerror="this.remove()">
+            <span class="product-emoji">🧺</span>
+            <span class="product-img-overlay">Handwoven</span>
+          </div>
+          <div class="product-body">
+            <div class="product-category-tag">विणकाम · Weaving</div>
+            <div class="product-name">हाताने विणलेली टोपली</div>
+            <div class="product-name-en">Handwoven Bamboo Basket</div>
+            <p class="product-desc">बांबूपासून हाताने विणलेली मजबूत व टिकाऊ टोपली. दैनंदिन वापरासाठी.</p>
+          </div>
+          <div class="product-footer">
+            <div class="product-price"><small>₹350</small>₹250</div>
+            <a href="https://wa.me/917517647277?text=नमस्कार%2C%20मला%20%22हाताने%20विणलेली%20टोपली%22%20ऑर्डर%20करायची%20आहे." target="_blank" class="order-btn">
+              <span class="wa-icon">🛒</span> ऑर्डर करा
+            </a>
+          </div>
+        </div>
+
+        <div class="product-card reveal reveal-delay-1">
+          <div class="product-img-wrap weave">
+            <img class="product-photo" src="images/decorative-woven-mat.jpg" alt="Decorative Woven Mat" loading="lazy" onerror="this.remove()">
+            <span class="product-emoji">🎋</span>
+            <span class="product-img-overlay">Handwoven</span>
+          </div>
+          <div class="product-body">
+            <div class="product-category-tag">विणकाम · Weaving</div>
+            <div class="product-name">सजावटीची चटई</div>
+            <div class="product-name-en">Decorative Woven Mat</div>
+            <p class="product-desc">रंगीत धाग्यांनी विणलेली सुंदर चटई. घर सजावटीसाठी उत्तम.</p>
+          </div>
+          <div class="product-footer">
+            <div class="product-price"><small>₹500</small>₹380</div>
+            <a href="https://wa.me/917517647277?text=नमस्कार%2C%20मला%20%22सजावटीची%20चटई%22%20ऑर्डर%20करायची%20आहे." target="_blank" class="order-btn">
+              <span class="wa-icon">🛒</span> ऑर्डर करा
+            </a>
+          </div>
+        </div>
+
+        <div class="product-card reveal reveal-delay-2">
+          <span class="product-badge new">New</span>
+          <div class="product-img-wrap weave">
+            <img class="product-photo" src="images/handmade-jute-handbag.jpg" alt="Handmade Jute Handbag" loading="lazy" onerror="this.remove()">
+            <span class="product-emoji">👜</span>
+            <span class="product-img-overlay">Handmade</span>
+          </div>
+          <div class="product-body">
+            <div class="product-category-tag">विणकाम · Weaving</div>
+            <div class="product-name">हँडमेड जूट पर्स</div>
+            <div class="product-name-en">Handmade Jute Handbag</div>
+            <p class="product-desc">जूटपासून बनवलेला टिकाऊ व पर्यावरणपूरक पर्स. दैनंदिन वापरासाठी.</p>
+          </div>
+          <div class="product-footer">
+            <div class="product-price"><small>₹600</small>₹420</div>
+            <a href="https://wa.me/917517647277?text=नमस्कार%2C%20मला%20%22हँडमेड%20जूट%20पर्स%22%20ऑर्डर%20करायचा%20आहे." target="_blank" class="order-btn">
+              <span class="wa-icon">🛒</span> ऑर्डर करा
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── CATEGORY: HOME DECOR ── -->
+    <div class="category-section reveal" id="cat-decor">
+      <div class="cat-section-header">
+        <div class="cat-section-icon">🏺</div>
+        <div class="cat-section-title">
+          <h2>घर सजावट · Home Décor</h2>
+          <p>Handcrafted décor pieces to beautify your home naturally</p>
+        </div>
+        <span class="cat-section-count">3 उत्पादने</span>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card reveal">
+          <span class="product-badge popular">Popular</span>
+          <div class="product-img-wrap decor">
+            <img class="product-photo" src="images/clay-flower-vase.jpg" alt="Clay Flower Vase" loading="lazy" onerror="this.remove()">
+            <span class="product-emoji">🏺</span>
+            <span class="product-img-overlay">Handmade</span>
+          </div>
+          <div class="product-body">
+            <div class="product-category-tag">घर सजावट · Décor</div>
+            <div class="product-name">मातीची फुलदाणी</div>
+            <div class="product-name-en">Clay Flower Vase</div>
+            <p class="product-desc">हाताने बनवलेली व रंगवलेली मातीची फुलदाणी. घराला नैसर्गिक स्पर्श.</p>
+          </div>
+          <div class="product-footer">
+            <div class="product-price"><small>₹400</small>₹280</div>
+            <a href="https://wa.me/917517647277?text=नमस्कार%2C%20मला%20%22मातीची%20फुलदाणी%22%20ऑर्डर%20करायची%20आहे." target="_blank" class="order-btn">
+              <span class="wa-icon">🛒</span> ऑर्डर करा
+            </a>
+          </div>
+        </div>
+
+        <div class="product-card reveal reveal-delay-1">
+          <div class="product-img-wrap decor">
+            <img class="product-photo" src="images/warli-art-painted-frame.jpg" alt="Warli Art Painted Frame" loading="lazy" onerror="this.remove()">
+            <span class="product-emoji">🖼️</span>
+            <span class="product-img-overlay">Handpainted</span>
+          </div>
+          <div class="product-body">
+            <div class="product-category-tag">घर सजावट · Décor</div>
+            <div class="product-name">वारली चित्रकला फ्रेम</div>
+            <div class="product-name-en">Warli Art Painted Frame</div>
+            <p class="product-desc">पारंपारिक वारली चित्रकलेने सजवलेली लाकडी फ्रेम. भिंत सजावटीसाठी.</p>
+          </div>
+          <div class="product-footer">
+            <div class="product-price"><small>₹700</small>₹500</div>
+            <a href="https://wa.me/917517647277?text=नमस्कार%2C%20मला%20%22वारली%20चित्रकला%20फ्रेम%22%20ऑर्डर%20करायची%20आहे." target="_blank" class="order-btn">
+              <span class="wa-icon">🛒</span> ऑर्डर करा
+            </a>
+          </div>
+        </div>
+
+        <div class="product-card reveal reveal-delay-2">
+          <span class="product-badge new">New</span>
+          <div class="product-img-wrap decor">
+            <img class="product-photo" src="images/clay-candle-holder-set.jpg" alt="Clay Candle Holder Set" loading="lazy" onerror="this.remove()">
+            <span class="product-emoji">🕯️</span>
+            <span class="product-img-overlay">Handmade</span>
+          </div>
+          <div class="product-body">
+            <div class="product-category-tag">घर सजावट · Décor</div>
+            <div class="product-name">मातीचा कँडल होल्डर</div>
+            <div class="product-name-en">Clay Candle Holder Set</div>
+            <p class="product-desc">नक्षीदार मातीचा कँडल होल्डर. रात्रीच्या सजावटीसाठी अप्रतिम.</p>
+          </div>
+          <div class="product-footer">
+            <div class="product-price"><small>₹350</small>₹240</div>
+            <a href="https://wa.me/917517647277?text=नमस्कार%2C%20मला%20%22मातीचा%20कँडल%20होल्डर%22%20ऑर्डर%20करायचा%20आहे." target="_blank" class="order-btn">
+              <span class="wa-icon">💬</span> ऑर्डर करा
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── CUSTOM ORDER BANNER ── -->
+    <div class="custom-order-banner reveal">
+      <div class="custom-order-text">
+        <h3>🎨 कस्टम ऑर्डर हवी आहे?</h3>
+        <p>Want a specific design, bulk order, or gift hamper? We make it for you — just WhatsApp us!</p>
+      </div>
+      <a href="https://wa.me/917517647277?text=नमस्कार%2C%20मला%20कस्टम%20ऑर्डर%20बद्दल%20माहिती%20हवी%20आहे." target="_blank" class="custom-order-btn">
+        💬 WhatsApp करा · Contact Now
+      </a>
+    </div>
+
+    <!-- ── HOW TO ORDER ── -->
+    <div class="how-to-order reveal">
+      <h3>📦 ऑर्डर कसे करावे? · How to Order</h3>
+      <div class="order-steps">
+        <div class="order-step">
+          <div class="step-num">01</div>
+          <span class="step-icon">👆</span>
+          <h4>उत्पादन निवडा</h4>
+          <p>Choose your product and tap "ऑर्डर करा"</p>
+        </div>
+        <div class="order-step">
+          <div class="step-num">02</div>
+          <span class="step-icon">💬</span>
+          <h4>WhatsApp उघडेल</h4>
+          <p>Enter your contact and delivery details</p>
+        </div>
+        <div class="order-step">
+          <div class="step-num">03</div>
+          <span class="step-icon">✅</span>
+          <h4>ऑर्डर विनंती</h4>
+          <p>We will contact you to confirm the price and availability</p>
+        </div>
+        <div class="order-step">
+          <div class="step-num">04</div>
+          <span class="step-icon">💰</span>
+          <h4>UPI पेमेंट</h4>
+          <p>Pay via GPay / PhonePe / UPI — fast & secure</p>
+        </div>
+        <div class="order-step">
+          <div class="step-num">05</div>
+          <span class="step-icon">🚚</span>
+          <h4>डिलिव्हरी</h4>
+          <p>Your handcrafted product delivered to your door</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<div class="order-modal" id="order-modal" role="dialog" aria-modal="true" aria-labelledby="order-modal-title" hidden>
+  <div class="order-modal-card">
+    <div class="order-modal-header">
+      <h2 id="order-modal-title">ऑर्डर कशी कराल? · How to order</h2>
+      <button class="order-modal-close" id="order-modal-close" type="button" aria-label="Close">&times;</button>
+    </div>
+    <p id="order-product" class="muted" style="margin:10px 0 16px; font-weight:600;"></p>
+    <a id="order-whatsapp" class="order-choice wa" href="https://wa.me/917517647277" target="_blank" rel="noopener">💬 WhatsApp वर ऑर्डर करा · Order on WhatsApp</a>
+    <a id="order-call" class="order-choice call" href="tel:+917517647277">📞 फोन करा · Call +91 75176 47277</a>
+    <p class="muted" style="font-size:12px; margin-top:14px; text-align:center;">सोम–शनि · Mon–Sat 10 AM – 6 PM</p>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">मराठवाडा <span>कलाग्राम</span></div>
+      <p>महिलांच्या उद्योग विकासासाठी एक चळवळ. परभणी, मराठवाडा. गेल्या ८ वर्षांपासून सेवाभावी वृत्तीने कार्यरत.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">मुख्यपान · Home</a></li>
+        <li><a href="index.html#about">आमच्याबद्दल</a></li>
+        <li><a href="index.html#training">प्रशिक्षण</a></li>
+        <li><a href="index.html#stories">यशोगाथा</a></li>
+        <li><a href="index.html#contact">संपर्क / नोंदणी</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Shop Categories</h4>
+      <ul>
+        <li><a href="#" onclick="filterCategory('diya',null)">🪔 दिवे · Diyas</a></li>
+        <li><a href="#" onclick="filterCategory('statue',null)">🗿 मूर्ती · Statues</a></li>
+        <li><a href="#" onclick="filterCategory('jewel',null)">📿 दागिने · Jewellery</a></li>
+        <li><a href="#" onclick="filterCategory('weave',null)">🧵 विणकाम · Weaving</a></li>
+        <li><a href="#" onclick="filterCategory('decor',null)">🏺 घर सजावट · Décor</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 मराठवाडा कलाग्राम — मातोश्री हस्तकला विकास महिला बचत गट, परभणी · All Rights Reserved</p>
+    <p style="margin-top:6px;font-size:11px;color:rgba(255,255,255,0.3);">Empowering Women · Preserving Craft · Building Marathwada</p>
+  </div>
+</footer>
+
+<script>
+  // ── Mobile Nav
+  function toggleNav() {
+    document.getElementById('mobileNav').classList.toggle('open');
+  }
+
+  // ── Category Filter (sidebar buttons)
+  function filterCategory(cat, btn) {
+    // Update sidebar buttons
+    document.querySelectorAll('.cat-filter-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+
+    // Update filter chips
+    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+    const matchChip = [...document.querySelectorAll('.filter-chip')].find(c =>
+      (cat === 'all' && c.textContent.includes('All')) ||
+      c.getAttribute('onclick')?.includes(`'${cat}'`)
+    );
+    if (matchChip) matchChip.classList.add('active');
+
+    // Show/hide sections
+    const sections = document.querySelectorAll('.category-section');
+    let count = 0;
+    sections.forEach(s => {
+      if (cat === 'all' || s.id === `cat-${cat}`) {
+        s.classList.remove('hidden');
+        count += 3;
+      } else {
+        s.classList.add('hidden');
+      }
+    });
+    document.getElementById('productCount').textContent = cat === 'all' ? 15 : 3;
+
+    // Scroll to products
+    document.querySelector('.shop-layout').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // ── Filter Chips (top bar)
+  function filterChip(cat, chip) {
+    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+
+    document.querySelectorAll('.cat-filter-btn').forEach(b => b.classList.remove('active'));
+    const matchBtn = [...document.querySelectorAll('.cat-filter-btn')].find(b =>
+      (cat === 'all' && b.getAttribute('onclick')?.includes("'all'")) ||
+      b.getAttribute('onclick')?.includes(`'${cat}'`)
+    );
+    if (matchBtn) matchBtn.classList.add('active');
+
+    const sections = document.querySelectorAll('.category-section');
+    sections.forEach(s => {
+      if (cat === 'all' || s.id === `cat-${cat}`) {
+        s.classList.remove('hidden');
+      } else {
+        s.classList.add('hidden');
+      }
+    });
+    document.getElementById('productCount').textContent = cat === 'all' ? 15 : 3;
+  }
+
+  // ── Scroll Reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.background =
+      window.scrollY > 50 ? 'rgba(26,10,0,0.99)' : 'rgba(26,10,0,0.97)';
+  });
+
+  // ── Order chooser: WhatsApp or Call (no backend needed)
+  const orderModal = document.getElementById('order-modal');
+
+  function closeOrderModal() { orderModal.hidden = true; }
+
+  document.addEventListener('click', event => {
+    const orderLink = event.target.closest('a.order-btn');
+    if (!orderLink) return;
+    event.preventDefault();
+    const name = orderLink.closest('.product-card').querySelector('.product-name').textContent.trim();
+    document.getElementById('order-product').textContent = name;
+    // reuse the pre-written WhatsApp message already on the product button
+    document.getElementById('order-whatsapp').href = orderLink.href;
+    orderModal.hidden = false;
+  });
+
+  document.getElementById('order-modal-close').addEventListener('click', closeOrderModal);
+  orderModal.addEventListener('click', event => { if (event.target === orderModal) closeOrderModal(); });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && !orderModal.hidden) closeOrderModal();
+  });
+</script>
+</body>
+</html>
